@@ -1,0 +1,4 @@
+#GENERAL
+spring:
+  application:
+    name: solicitacao

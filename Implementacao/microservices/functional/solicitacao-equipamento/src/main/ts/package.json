@@ -1,0 +1,17 @@
+{
+  "name": "equipamento",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "mavenbuild": "node node_modules/.bin/ng build -a equipamento --base-href /equipamento/"
+  },
+  "dependencies": {
+    "eits-ngx": "^1.0.0",
+    "eits-ng-starter-2017-01": "^1.0.0"
+  },
+  "devDependencies": {
+    "eits-ng-starter-2017-01-dev": "^1.0.0",
+    "@angular/cli": "1.4.9"
+  }
+}

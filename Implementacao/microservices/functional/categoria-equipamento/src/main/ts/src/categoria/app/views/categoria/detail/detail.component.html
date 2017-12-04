@@ -1,0 +1,45 @@
+<div class="container">
+    <md-card>
+      <md-card-title>Detalhes da categoria de equipamento</md-card-title>
+          <md-card-content class="mat-elevation-z3 bgc-gray-50" layout="column">
+              <div layout="column" flex>
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <h2>Detalhe da categoria</h2>
+                      <div layout-gt-xs="row" flex *ngIf="categoria"></div>
+
+                          <div layout="row" layout-margin>
+                              <p class="md-body-1 tc-grey-700">Cod.:</p>
+                              <span class="tc-grey-500 text-break" layout="row">{{ categoria?.id }}</span>
+                          </div>
+
+                          <div layout="row" layout-margin>
+                              <p class="md-body-1 tc-grey-700">Nome:</p>
+                              <span class="tc-grey-500 text-break" layout="row">{{ categoria?.tituloCategoria }}</span>
+                          </div>
+
+                          <div layout="row" layout-margin>
+                              <p class="md-body-1 tc-grey-700">Prioridade</p>
+                              <span class="tc-grey-500 text-break" layout="row">{{ categoria?.prioridadeCategoria }}</span>
+                          </div>
+
+                          <div layout="row" layout-margin>
+                              <p class="md-body-1 tc-grey-700">Data de Registro</p>
+                              <span class="tc-grey-500 text-break">{{categoria?.criacao | date: 'dd/MM/yyyy'}}</span>
+                          </div>
+
+                          <div layout="row" layout-margin>
+                              <p class="md-body-1 tc-grey-700">Descricao</p>
+                              <span class="tc-grey-500 text-break" layout="row">{{ categoria?.descricaoCategoria}}</span>
+                          </div>
+                  </div>
+              </div>
+            <md-card-actions>
+                <button md-raised-button color="primary" [routerLink] = "['/categoria/editar', categoria.id] ">Alterar</button>
+                <button md-raised-button color="primary" (click)="openExcludeDialog()">Excluir</button>
+                <button md-raised-button color="primary" (click)="goBack()">Voltar</button>
+            </md-card-actions>
+          </md-card-content>
+    </md-card>
+</div> 
+
+<!-- [routerLink]="['']" -->

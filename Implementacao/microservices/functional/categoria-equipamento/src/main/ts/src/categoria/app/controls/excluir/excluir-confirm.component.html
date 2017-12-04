@@ -1,0 +1,20 @@
+<h2 md-dialog-title>Excluir Categoria</h2>
+     <md-dialog-content>
+          <div layout="row" layout-margin>
+                <p class="md-body-1 tc-grey-700">Cod.:</p>
+                <span class="tc-grey-500 text-break" layout="row">{{ categoria?.id }}</span>
+          </div>
+                    
+          <div layout="row" layout-margin>
+                 <p class="md-body-1 tc-grey-700">Nome:</p>
+                 <span class="tc-grey-500 text-break" layout="row">{{ categoria?.tituloCategoria }}</span>
+          </div>
+                    
+          Confirmar exclusão?
+      </md-dialog-content>        
+  <md-dialog-actions layout-margin layout="row" flex >
+          <button md-raised-button md-dialog-close (click)="onNoclick()">Não</button>
+          <button md-raised-button [md-dialog-close]="true" (click)="deleteCategoriaById(categoria?.id)" >Sim</button>
+ </md-dialog-actions>
+
+        

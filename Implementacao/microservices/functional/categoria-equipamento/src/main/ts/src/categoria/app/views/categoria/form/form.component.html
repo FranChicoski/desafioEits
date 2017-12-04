@@ -1,0 +1,49 @@
+<!-- <div class="container"></div> -->
+<md-card flex="70">
+    <md-card-title>Cadastro de categoria de equipamento</md-card-title>
+        <md-card-content class="mat-elevation-z3 bgc-gray-50">
+          <div class="form-container" layout="row">
+                <form [formGroup]="categoriaForm" (ngSubmit)="onFormSubmit(categoriaForm)">
+                    <!--Campo de título da categoria obrigatório com no máximo 120 caracteres  -->
+                    <!-- <div class="form-group" layout="row" flex="50"> descobrir como fazer posicionamento -->
+                        <md-input-container>
+                                <input mdInput formControlName="tituloCategoria" class="form-control"  
+                                    [(ngModel)]="categoria.tituloCategoria"  placeholder="Título da categoria" required >
+                             <!--   <md-error *ngIf="tiitulo.invalid">{{validationMessages.titulo}}</md-error> -->
+                        </md-input-container>
+                    <!-- </div> -->
+
+                    <!-- <div class="form-group" float="left"> -->
+                        <md-form-field>
+                            <md-select placeholder="Prioridade" required formControlName="prioridadeCategoria" 
+                                        class="form-control" [(ngModel)]="categoria.prioridadeCategoria">
+                              <md-option *ngFor="let prioridade of prioridades"
+                                    [value]="prioridade.value">{{ prioridade.viewValue }}
+                              </md-option>
+                            </md-select>
+                        </md-form-field>
+                    <!-- </div> -->
+
+                    <!-- Descrição da categoria com textarea de tamanho indeterminado-->
+                    <!-- <div class="form-group" layout="column" flex="50"> -->
+                        <md-input-container>
+                            <textarea mdInput required formControlName="descricaoCategoria" class="form-control"
+                                placeholder="Insira a descrição"
+                                 [(ngModel)]="categoria.descricaoCategoria"></textarea>
+                        </md-input-container>
+                    <!-- </div> -->
+
+                    <!--Botões de ação ver se no css eu consigo fazer ele ficar na esquerda-->
+                    <!-- <div class="button-row-form"> -->
+                      <button md-raised-button color="primary" type="submit" [disabled]='!categoriaForm.valid'>Salvar</button>
+                      <button md-raised-button color="primary" [routerLink]="['']">Cancelar</button>
+                    <!-- </div> -->
+              </form>
+        </div>
+      </md-card-content>
+</md-card>
+
+
+<!-- Falta fazer ainda: 
+-estilizar
+-ver posicionamento -->

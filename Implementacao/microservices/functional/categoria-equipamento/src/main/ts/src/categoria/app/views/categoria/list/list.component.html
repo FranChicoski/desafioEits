@@ -1,0 +1,79 @@
+<div class="janela" layout="column" layout-margin>
+    <md-card>
+      <md-card-title>Consulta de categorias de equipamento</md-card-title>
+        <md-card-content class="mat-elevation-z3 bgc-gray-50">
+              <div class="filtroCategoria" layout="row" flex >
+                  <md-input-container id="Busca" flex="30">
+                      <input mdInput  id="txtBusca" placeholder="Buscar..." [(ngModel)]="filtros.filter" >
+                  </md-input-container>
+
+                  <md-form-field flex="30">
+                        <label>Prioridade</label>
+                        <md-select  placeholder="Prioridade" [(ngModel)]="filtros.prioridade">
+                             <md-option *ngFor="let prioridade of prioridades" [value]="prioridade.value"> {{ prioridade.viewValue }} </md-option>
+                        </md-select>
+                  </md-form-field>
+
+
+                   <md-input-container flex="20" class="datas-filtro" layout="column" >
+                        De
+                        <input mdInput type="date" [mdDatepicker]="dataInicial" 
+                                 layout="column" flex="50" [(ngModel)]="filtros.dataCriacaoStart" >
+                        <button mdSuffix [mdDatepickerToggle]="dataInicial"></button>
+                        <md-datepicker #dataInicial></md-datepicker>
+                  </md-input-container>
+
+                  <md-input-container flex="20" class="datas-filtro" layout="column">
+                        Até
+                        <input mdInput type="date" [mdDatepicker]="dataFinal" 
+                                 layout="column" flex="50" [(ngModel)]="filtros.dataCriacaoEnd">
+                        <button mdSuffix [mdDatepickerToggle]="dataFinal"></button>
+                        <md-datepicker #dataFinal></md-datepicker>
+                  </md-input-container>
+
+                  <div layout="column" flex="20" class="botoesFiltro">
+                      <md-card-actions  layout="column">
+                          <button md-icon-button color="primary" [routerLink]="['/categoria/cadastro']">
+                           	  <md-icon>add</md-icon> 
+                          </button> 
+                          <button md-icon-button color="primary" (click)="filterReciever()">
+                              <md-icon>search</md-icon>
+                          </button>
+                      </md-card-actions>
+                  </div>
+                </div>
+        </md-card-content>
+
+        <md-divider></md-divider>
+
+        <table td-data-table>
+          <thead>
+            <tr td-data-table-column-row>
+              <th flex="40" td-data-table-column [numeric]="1">Título da categoria</th>
+              <th flex="20" td-data-table-column [numeric]="2">Prioridade</th>
+              <th flex="20" td-data-table-column [numeric]="3">Data de registro</th>
+              <th flex="20" td-data-table-column [numeric]="4">Operações</th>
+            </tr>
+          </thead>
+          <tbody class="md-subhead tc-black-600">
+            <tr td-data-table-row *ngFor="let categoria of categorias">
+              <td flex="40" td-data-table-cell [numeric]="1">{{categoria?.tituloCategoria}}</td>
+              <td flex="20" td-data-table-cell [numeric]="2">{{categoria?.prioridadeCategoria }}</td>
+              <td flex="20" td-data-table-cell [numeric]="3">{{categoria?.criacao | date: 'dd/MM/yyyy'}}</td>
+              <td flex="20" td-data-table-cell [numeric]="4">
+                    <md-button [routerLink]="['/categoria/detalhe', categoria?.id]">
+                      <i class="material-icons">info</i><!-- este que eu alterei..coloquei um / na frente de categoria -->
+                    </md-button>
+                    <md-button [routerLink] = "['/categoria/editar', categoria?.id]">
+                    	  <md-icon>edit</md-icon>
+                  		  <!-- <i class="material-icons">edit</i> -->                              
+                    </md-button>
+                    <md-button (click)="openExcludeDialog()">
+                        <i class="material-icons">delete</i>                               
+                    </md-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </md-card>
+</div> 

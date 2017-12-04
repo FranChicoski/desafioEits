@@ -1,0 +1,9 @@
+#GENERAL
+spring:
+  application:
+    name: categoria
+
+cache:
+  redis:
+    host: localhost
+    port: 6379
